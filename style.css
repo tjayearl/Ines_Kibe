@@ -1,0 +1,322 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Background: Deep purple to lavender gradient */
+    background: linear-gradient(to bottom, #4a148c, #ce93d8);
+    color: white;
+    overflow: hidden; /* Hide confetti that goes off-screen */
+    position: relative;
+}
+
+/* Card Container */
+.card {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 2rem clamp(1.5rem, 5vw, 3rem);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+/* Main Message: "Happy Birthday" */
+h1 {
+    /* A beautiful cursive font from Google Fonts */
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 10vw, 5rem); /* Responsive font size */
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    /* Optional Animation: Glowing text */
+    animation: glow 2.5s ease-in-out infinite alternate;
+}
+
+/* Personal Message */
+.personal-message {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.6;
+    max-width: 60ch; /* Limits line length for readability */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Glowing Text Animation */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #e1bee7, 0 0 30px #e1bee7;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ab47bc, 0 0 40px #ab47bc;
+    }
+}
+
+/* --- Decorative Elements: Glowing Sparkles --- */
+.sparkle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: white;
+    border-radius: 50%;
+    /* Glowing effect using box-shadow with pastel accents */
+    box-shadow: 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #e1bee7;
+    opacity: 0;
+    /* Use the new twinkle animation */
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+/* Twinkle animation for sparkles */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Position sparkles around the screen to twinkle in place */
+.sparkle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 50%; left: 85%; animation-delay: -0.5s; }
+.sparkle:nth-child(3) { top: 80%; left: 25%; animation-delay: -1s; }
+.sparkle:nth-child(4) { top: 10%; left: 90%; animation-delay: -1.5s; }
+.sparkle:nth-child(5) { top: 90%; left: 5%; animation-delay: -2s; }
+.sparkle:nth-child(6) { top: 60%; left: 50%; animation-delay: -2.5s; }
+.sparkle:nth-child(7) { top: 5%; left: 30%; animation-delay: -3s; }
+.sparkle:nth-child(8) { top: 40%; left: 70%; animation-delay: -3.5s; }
+
+/* --- Decorative Elements: Floating Hearts --- */
+.heart-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    bottom: -30px; /* Start below screen */
+    animation: float-heart 10s linear infinite;
+}
+
+/* CSS shape for the heart using pseudo-elements */
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #f8bbd0; /* Pastel Pink */
+    border-radius: 50%;
+    box-shadow: 0 0 15px #f8bbd0; /* Add a soft glow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 10px;
+}
+
+/* Hover effect for hearts */
+.heart:hover::before,
+.heart:hover::after {
+    background-color: #fff; /* Glow white on hover */
+    box-shadow: 0 0 20px #fff, 0 0 30px #e1bee7;
+}
+
+@keyframes float-heart {
+    from {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-100vh) rotate(-45deg);
+        opacity: 0.8;
+    }
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+.heart:nth-child(2) { left: 30%; animation-delay: -3s; animation-duration: 15s; }
+.heart:nth-child(3) { left: 50%; animation-delay: -8s; animation-duration: 10s; }
+.heart:nth-child(4) { left: 70%; animation-delay: -1s; animation-duration: 14s; }
+.heart:nth-child(5) { left: 90%; animation-delay: -5s; animation-duration: 9s; }
+.heart:nth-child(6) { left: 20%; animation-delay: -10s; animation-duration: 11s; }
+.heart:nth-child(7) { left: 80%; animation-delay: -6s; animation-duration: 13s; }
+
+/* --- Decorative Elements: Confetti Animation --- */
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicking through the confetti layer */
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: #f44336; /* Default color */
+    top: -20px; /* Start above the screen */
+    opacity: 0;
+    animation: fall 7s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh) rotate(720deg);
+        opacity: 1;
+    }
+}
+
+/* Create variety in confetti with pastel colors */
+.confetti:nth-child(1) { left: 10%; animation-delay: 0s; background-color: #f8bbd0; } /* Pastel Pink */
+.confetti:nth-child(2) { left: 20%; animation-delay: -5s; animation-duration: 6s; background-color: #e1bee7; } /* Pastel Lavender */
+.confetti:nth-child(3) { left: 30%; animation-delay: -3s; background-color: #ffffff; } /* White */
+.confetti:nth-child(4) { left: 40%; animation-delay: -2.5s; animation-duration: 8s; background-color: #fff9c4; } /* Pastel Yellow */
+.confetti:nth-child(5) { left: 50%; animation-delay: -4.5s; background-color: #c8e6c9; } /* Pastel Green */
+.confetti:nth-child(6) { left: 60%; animation-delay: -7s; animation-duration: 7s; background-color: #bbdefb; } /* Pastel Blue */
+.confetti:nth-child(7) { left: 70%; animation-delay: -1.5s; background-color: #f8bbd0; } /* Pastel Pink */
+.confetti:nth-child(8) { left: 80%; animation-delay: -6s; animation-duration: 9s; background-color: #e1bee7; } /* Pastel Lavender */
+.confetti:nth-child(9) { left: 90%; animation-delay: -3.5s; background-color: #ffffff; } /* White */
+.confetti:nth-child(10) { left: 15%; animation-delay: -9s; animation-duration: 8s; background-color: #fff9c4; } /* Pastel Yellow */
+.confetti:nth-child(11) { left: 85%; animation-delay: -2s; background-color: #c8e6c9; } /* Pastel Green */
+.confetti:nth-child(12) { left: 5%; animation-delay: -1s; animation-duration: 10s; background-color: #bbdefb; } /* Pastel Blue */
+.confetti:nth-child(13) { left: 95%; animation-delay: -7s; background-color: #f8bbd0; } /* Pastel Pink */
+
+/* --- Interactivity: Reveal Button and Modal --- */
+
+/* Reveal Button */
+.reveal-button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #4a148c; /* Deep purple text */
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reveal-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal for Hidden Message */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: linear-gradient(to bottom, #6a1b9a, #ab47bc);
+    color: white;
+    padding: 2rem clamp(1.5rem, 5vw, 3rem);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 90%;
+    width: 500px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.modal-content p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: white;
+}
+
+1.  **Save the Files:** Save the two code blocks above as `index.html` and `style.css` in the same folder.
+2.  **Customize:** Open `index.html` in a text editor and change the text inside the `<p class="personal-message">` tag to your own heartfelt note.
+3.  **View:** Open the `index.html` file in your web browser (like Chrome, Firefox, or Safari) to see the animated birthday card.
+
+This setup gives you a responsive, animated, and very personal digital card that looks great on both desktop and mobile devices. Happy celebrating!
+
+<!--
+[PROMPT_SUGGESTION]Can you add floating heart emojis to the background as well?[/PROMPT_SUGGESTION]
+[PROMPT_SUGGESTION]How can I change the cursive font to a different one?[/PROMPT_SUGGESTION]
+-->
